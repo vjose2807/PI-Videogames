@@ -1,0 +1,38 @@
+.contFilters{
+    position: fixed;
+    width: 11%;
+    margin-left: 15px;
+
+    display:flex;
+    flex-direction: column;
+    
+}
+
+.contInfoFilters{
+    height: 19rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.closeFilter{
+    font-size: small;
+    font-weight: bold;
+    border-radius: 15px;
+    width: 100%;
+    height: 13%;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    color: #000000;
+    background-color: #f4ff90;
+}
+
+.delButton{
+    font-size:xx-small;
+    border-radius: 20px;
+    height: 2em;
+    display: flex;
+    align-self: center;
+}

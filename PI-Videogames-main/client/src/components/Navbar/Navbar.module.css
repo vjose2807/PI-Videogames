@@ -1,0 +1,27 @@
+.contBarra{
+    background: url("https://png.pngtree.com/thumb_back/fh260/background/20200710/pngtree-soft-cool-and-warm-contrast-gradient-background-image_351658.jpg");
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.contOptions{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.imgsCont{
+    width: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.imgs{
+    width: 30px;
+    border-radius: 20px;
+}
