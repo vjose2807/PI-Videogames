@@ -1,105 +1,133 @@
 .globalCont {
-  background-color: transparent;
-  background-size: cover;
-  width: 100vw;
-  height: 93vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  position: fixed;
-}
-
-.contForm {
-  background-color: transparent;
-  background-size: cover;
-  box-shadow: -8px 9px 14px -3px rgba(0, 0, 0, 0.75);
-  margin-top: 2%;
-  padding-top: 2px;
-  width: 50%;
-  height: 90%;
-
-  border-radius: 10px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.contForm {
+  background-color: #f8f8f838;
+  width: 400px;
+  padding: 20px;
+
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
 .title {
-  color: white;
-  text-shadow: 0 0 6px #000000;
+  color: #f7f3f4;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.formData {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  width: 80%;
+.formData label {
+  color: rgb(179, 97, 117);
+  display: block;
+  margin-bottom: 5px;
 }
 
-.contPlatforms,
-.contGenres {
-  color: black;
-  height: 10%;
-  background: url("https://img.freepik.com/free-vector/vibrant-summer-ombre-background-vector_53876-105765.jpg");
-  background-size: cover;
-  border-radius: 10px;
-  display: flex;
+.formData input,
+.formData textarea,
+.formData select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
 
-  flex-wrap: wrap;
+.button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.disabledButton {
+  background-color: #ccc;
+  color: #888;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: not-allowed;
 }
 
 .infoValidation {
-  margin-top: 100px;
-  padding-left: 30px;
-  padding-right: 20px;
-  background: url("https://wallpaperaccess.com/full/3010046.jpg");
-  background-size: cover;
-  border-radius: 20px;
-  width: 30%;
-  height: 70%;
-  box-shadow: -8px 9px 14px -3px rgba(0, 0, 0, 0.75);
-
-  display: flex;
-  flex-direction: column;
+  color: #110f0e;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f8f838;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .titleInfo {
-  color: white;
+  margin-bottom: 20px;
 }
 
 .uList {
-  height: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  list-style: none;
+  padding: 0;
 }
 
-.validName,
-.validImg,
-.validDes,
-.validRel,
-.validRat,
-.validGen,
-.validPlat {
-  padding-left: 10px;
-  border-radius: 5px;
-  background-color: rgb(179, 255, 103);
+.uList li {
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 
-.errorName,
-.errorRel,
-.errorRat,
-.errorGen,
-.errorPlat {
-  padding-left: 10px;
-  border-radius: 5px;
-  background-color: rgb(255, 100, 100);
+.errorName {
+  color: rgb(230, 222, 116);
 }
 
-.errorImg,
+.validName {
+  color: rgb(241, 235, 235);
+}
+
+.errorImg {
+  color: rgb(230, 222, 116);
+}
+
+.validImg {
+  color: rgb(241, 235, 235);
+}
+
 .errorDes {
-  padding-left: 10px;
-  border-radius: 5px;
-  background-color: rgb(250, 241, 120);
+  color: rgb(230, 222, 116);
+}
+
+.validDes {
+  color: rgb(241, 235, 235);
+}
+
+.errorRel {
+  color: rgb(230, 222, 116);
+}
+
+.validRel {
+  color: rgb(241, 235, 235);
+}
+
+.errorRat {
+  color: rgb(230, 222, 116);
+}
+
+.validRat {
+  color: rgb(241, 235, 235);
+}
+
+.errorGen {
+  color: rgb(230, 222, 116);
+}
+
+.validGen {
+  color: rgb(241, 235, 235);
+}
+
+.errorPlat {
+  color: rgb(230, 222, 116);
+}
+
+.validPlat {
+  color: rgb(241, 235, 235);
 }
