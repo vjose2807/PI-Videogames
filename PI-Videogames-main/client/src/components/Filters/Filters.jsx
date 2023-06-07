@@ -38,34 +38,51 @@ const Filters = ({ genresGames, setCurrentPage, filterInfo }) => {
 
   return (
     <div className={style.contFilters}>
-      <p>Filtrar juegos por:</p>
-      <label>*Órden Alfabético:</label>
-      <select name="Order" onChange={ordenamiento}>
-        <option value="AllGames">All Games</option>
-        <option value="Ascendente">Ascendente</option>
-        <option value="Descendente">Descendente</option>
-        <option value="Rating">Rating</option>
-      </select>
-      <br />
-      <label>*Almacenamiento:</label>
-      <select name="Datatype" onChange={filterDbAPI}>
-        <option value="AllGames">All Games</option>
-        <option value="Stored Games">Stored Games</option>
-        <option value="Created Games">Created Games</option>
-      </select>
-      <br />
-      <label>*Géneros:</label>
-      <select name="Filters" onChange={filterGenre}>
-        <option value="Genres">All Genres</option>
-        {genresGames?.map((genre) => (
-          <option key={genre} value={genre}>
-            {genre}
-          </option>
-        ))}
-      </select>
-      <br />
-      <button onClick={showAllVideogames}>Mostrar todos los Videojuegos</button>
-      <p>Filtros Aplicados:</p>
+      <p className={style.filterTitle}>Filtrar juegos por:</p>
+      <label className={style.filterLabel}>*Órden Alfabético:</label>
+      <div className={style.filterRow}>
+        <select
+          name="Order"
+          className={style.filterSelect}
+          onChange={ordenamiento}
+        >
+          <option value="AllGames">All Games</option>
+          <option value="Ascendente">Ascendente</option>
+          <option value="Descendente">Descendente</option>
+          <option value="Rating">Rating</option>
+        </select>
+      </div>
+      <label className={style.filterLabel}>*Almacenamiento:</label>
+      <div className={style.filterRow}>
+        <select
+          name="Datatype"
+          className={style.filterSelect}
+          onChange={filterDbAPI}
+        >
+          <option value="AllGames">All Games</option>
+          <option value="Stored Games">Stored Games</option>
+          <option value="Created Games">Created Games</option>
+        </select>
+      </div>
+      <label className={style.filterLabel}>*Géneros:</label>
+      <div className={style.filterRow}>
+        <select
+          name="Filters"
+          className={style.filterSelect}
+          onChange={filterGenre}
+        >
+          <option value="Genres">All Genres</option>
+          {genresGames?.map((genre) => (
+            <option key={genre} value={genre}>
+              {genre}
+            </option>
+          ))}
+        </select>
+      </div>
+      <button className={style.showAllButton} onClick={showAllVideogames}>
+        Mostrar todos los Videojuegos
+      </button>
+      <p className={style.appliedFiltersTitle}>Filtros Aplicados:</p>
       <div className={style.contInfoFilters}>
         {filterInfo.length === 0 ? (
           <li>Sin filtros.</li>
@@ -80,7 +97,7 @@ const Filters = ({ genresGames, setCurrentPage, filterInfo }) => {
               >
                 ❌
               </button>
-              <p>{filter}</p>
+              <p className={style.filterInfo}>{filter}</p>
             </div>
           ))
         )}

@@ -1,38 +1,98 @@
-.contFilters{
-    position: fixed;
-    width: 11%;
-    margin-left: 15px;
-
-    display:flex;
-    flex-direction: column;
-    
+.contFilters {
+  position: fixed;
+  width: 11%;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.contInfoFilters{
-    height: 19rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    flex-wrap: wrap;
+/* Estilo para el título de los filtros */
+.filterTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.closeFilter{
-    font-size: small;
-    font-weight: bold;
-    border-radius: 15px;
-    width: 100%;
-    height: 13%;
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
-    color: #000000;
-    background-color: #f4ff90;
+/* Estilo para cada fila de filtro */
+.filterRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.delButton{
-    font-size:xx-small;
-    border-radius: 20px;
-    height: 2em;
-    display: flex;
-    align-self: center;
+/* Estilo para las etiquetas de filtro */
+.filterLabel {
+  margin-right: 5px;
+}
+
+/* Estilo para las selecciones de filtro */
+.filterSelect {
+  flex-grow: 1;
+  height: 30px;
+  padding: 3px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Estilo para el botón de mostrar todos los videojuegos */
+.showAllButton {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #801642;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.showAllButton:hover {
+  background-color: #3bb3ba;
+}
+
+.showAllButton:active {
+  background-color: #2a999f;
+}
+
+/* Estilo para el título de los filtros aplicados */
+.appliedFiltersTitle {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contInfoFilters {
+  height: 19rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+/* Estilo para cada filtro aplicado */
+.closeFilter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #f4ff90;
+}
+
+/* Estilo para el botón de eliminar filtro */
+.delButton {
+  margin-right: 5px;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 20px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Estilo para la información del filtro */
+.filterInfo {
+  flex-grow: 1;
+  font-size: 14px;
 }

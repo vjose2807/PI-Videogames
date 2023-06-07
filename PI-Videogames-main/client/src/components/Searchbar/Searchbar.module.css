@@ -1,0 +1,33 @@
+.search-bar-container {
+  display: flex; /* Muestra los elementos en línea */
+  align-items: center; /* Centra verticalmente los elementos dentro del contenedor */
+  width: 400px; /* Establece el ancho del contenedor */
+}
+
+.search-bar-input {
+  flex-grow: 1; /* Permite que el campo de entrada ocupe todo el espacio disponible */
+  height: 30px; /* Establece la altura del campo de entrada */
+  padding: 5px 10px; /* Agrega un relleno interno en la parte superior e inferior de 5px y en los lados de 10px */
+  font-size: 16px; /* Establece el tamaño de fuente del campo de entrada */
+  border: 1px solid #d1ce2b; /* Agrega un borde de 1px sólido de color #ccc */
+  border-radius: 4px; /* Agrega una esquina redondeada de 4px al campo de entrada */
+}
+
+.search-bar-button {
+  height: 30px;
+  margin-left: 10px; /* Agrega un margen izquierdo de 10px al botón de búsqueda */
+  font-size: 13px; /* Establece el tamaño de fuente del botón de búsqueda */
+  background-color: #801642; /* Establece el color de fondo del botón de búsqueda */
+  color: #fff; /* Establece el color del texto del botón de búsqueda */
+  border: none; /* Quita el borde del botón de búsqueda */
+  border-radius: 4px; /* Agrega una esquina redondeada de 4px al botón de búsqueda */
+  cursor: pointer; /* Cambia el cursor del puntero cuando se pasa por encima del botón de búsqueda */
+}
+
+.search-bar-button:hover {
+  background-color: #c4460c; /* Cambia el color de fondo del botón de búsqueda cuando se pasa el cursor por encima */
+}
+
+.search-bar-button:active {
+  background-color: #f4f74e; /* Cambia el color de fondo del botón de búsqueda cuando se hace clic */
+}
