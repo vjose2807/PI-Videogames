@@ -1,17 +1,30 @@
 const axios = require("axios");
-const { Videogame } = require("../db");
-const cleanArray = require("../utils/cleanArray");
+const { Op } = require("sequelize");
+const { Videogame, Genre } = require("../db");
+const { cleanVgames } = require("../utils/cleanVgames");
+const cleanDetail = require("../utils/cleanVgameDetail");
+const gamesPageFilter = require("../utils/gamesPagesFilter");
 const { API_KEY } = process.env;
 
-const createVideogameDB = async (
+const createVideogameDB = async ({
   name,
   description,
   platforms,
   image,
   released,
-  rating
-) => {
-  return await Videogame.create({
+  rating,
+  genres,
+}) => {
+  const existVideogame = await Videogame.findAll({
+    where: {
+      name: {
+        [Op.iLike]: `%${name}%`,
+      },
+    },
+  });
+  if (existVideogame.length)
+    throw new Error("There is already a game with that name.");
+  const newVgame = await Videogame.create({
     name,
     description,
     platforms,
@@ -19,44 +32,78 @@ const createVideogameDB = async (
     released,
     rating,
   });
+
+  const foundGenres = await Genre.findAll({
+    where: {
+      name: {
+        [Op.in]: genres,
+      },
+    },
+  });
+
+  await newVgame.addGenres(foundGenres);
+
+  return newVgame;
 };
 
 const getGameById = async (id, source) => {
-  const videoGame =
-    source === "api"
-      ? (await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`))
-          .data
-      : await Videogame.findByPk(id);
+  if (source === "bdd") {
+    const vgameDetailDB = await Videogame.findByPk(id, {
+      include: {
+        model: Genre,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
 
-  return videoGame;
+    return vgameDetailDB;
+  } else if (source === "api") {
+    const response = (
+      await axios.get(`https://api.rawg.io/api/games/${id}?key=${API_KEY}`)
+    ).data;
+    const vgameDetail = cleanDetail(response);
+
+    return vgameDetail;
+  }
 };
 
 const getAllGames = async () => {
-  const videogamesDb = await Videogame.findAll();
-  const vgApiInfo = (
-    await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`)
-  ).data.results;
-  const videogamesApi = cleanArray(vgApiInfo);
+  const videogamesApi = await gamesPageFilter();
+  const videogamesDb = await Videogame.findAll({
+    include: {
+      model: Genre,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
+  });
+
   return [...videogamesApi, ...videogamesDb];
 };
 
 const getGameByName = async (name) => {
   const videogamesDb = await Videogame.findAll({
-    where: { name: name },
-    limit: 15,
+    where: { name: { [Op.iLike]: name } },
+    include: {
+      model: Genre,
+      attributes: ["name"],
+      through: {
+        attributes: [],
+      },
+    },
   });
 
-  const vgApiInfo = (
+  const response = (
     await axios.get(
-      `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}&pageSize=15`
+      `https://api.rawg.io/api/games?search=${name}&key=${API_KEY}`
     )
   ).data.results;
-
-  const videogamesApi = cleanArray(vgApiInfo);
-
-  const filteredApi = videogamesApi.filter((game) => game.name);
-
-  return [...filteredApi, ...videogamesDb];
+  const videogamesApi = cleanVgames(response);
+  const firstFifteenGames = videogamesApi.slice(0, 15);
+  return [...firstFifteenGames, ...videogamesDb];
 };
 
 module.exports = {
