@@ -1,18 +1,19 @@
-const axios = require("axios");
-const { API_KEY } = process.env;
+const { getAllGames } = require("../controllers/videogamesController");
 
 const getPlatformsHandler = async (req, res) => {
   try {
-    const response = await axios.get(
-      `https://api.rawg.io/api/platforms?key=${API_KEY}`
-    );
-    const platforms = response.data.results.map((platform) => ({
-      id: platform.id,
-      name: platform.name,
-    }));
-    res.status(200).json(platforms);
+    let newArr = [];
+    let aux = 0;
+    const allGames = await getAllGames();
+    allGames.forEach((game) => {
+      if (aux < game.platforms.length) {
+        aux = game.platforms.length;
+        newArr = game.platforms;
+      }
+    });
+    res.status(200).json(newArr);
   } catch (error) {
-    res.status(500).json({ error: "Error fetching platforms" });
+    res.status(400).json({ error: error.message });
   }
 };
 

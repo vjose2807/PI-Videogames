@@ -4,23 +4,14 @@ const {
   getGameByName,
   getAllGames,
 } = require("../controllers/videogamesController");
+const verifyDataGame = require("../utils/verifyDataGame");
 
 const videogamesHandler = async (req, res) => {
   const { name } = req.query;
 
   try {
-    if (name) {
-      const vgByName = await getGameByName(name);
-      if (vgByName.length === 0) {
-        const allGames = await getAllGames();
-        res.status(200).json(allGames);
-      } else {
-        res.status(200).json(vgByName);
-      }
-    } else {
-      const allGames = await getAllGames();
-      res.status(200).json(allGames);
-    }
+    const response = name ? await getGameByName(name) : await getAllGames();
+    res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -37,17 +28,20 @@ const vgDetailHandler = async (req, res) => {
 };
 
 const vgCreateHandler = async (req, res) => {
-  const { name, description, platforms, image, released, rating } = req.body;
+  const { name, description, platforms, image, released, rating, genres } =
+    req.body;
 
   try {
-    const response = await createVideogameDB(
+    const verifiedGame = verifyDataGame({
       name,
       description,
+      genres,
       platforms,
       image,
       released,
-      rating
-    );
+      rating,
+    });
+    const response = await createVideogameDB(verifiedGame);
     res.status(200).json(response);
   } catch (error) {
     res.status(400).json({ error: error.message });
