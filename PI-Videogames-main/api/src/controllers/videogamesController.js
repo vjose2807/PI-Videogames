@@ -1,9 +1,10 @@
 const axios = require("axios");
 const { Op } = require("sequelize");
 const { Videogame, Genre } = require("../db");
-const { cleanVgames } = require("../utils/cleanVgames");
+
 const cleanDetail = require("../utils/cleanVgameDetail");
 const gamesPageFilter = require("../utils/gamesPagesFilter");
+const cleanVgames = require("../utils/cleanVgames");
 const { API_KEY } = process.env;
 
 const createVideogameDB = async ({
