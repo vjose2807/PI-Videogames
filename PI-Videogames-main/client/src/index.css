@@ -2,7 +2,7 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  background: url("https://static.vecteezy.com/system/resources/previews/002/371/025/non_2x/neon-game-controller-or-joystick-for-game-console-on-dark-background-vector.jpg");
+  background: rgb(0, 0, 0);
   background-size: cover;
   background-position: center;
   background-repeat: round;
