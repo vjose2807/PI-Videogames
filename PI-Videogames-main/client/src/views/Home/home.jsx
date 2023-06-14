@@ -2,10 +2,10 @@ import Card from "../../components/Card/Card.jsx";
 import style from "./home.module.css"; //CSS
 
 import Paginado from "../../components/Paginator/Paginator.jsx";
-import Filters from "../../components/Filters/Filters.jsx";
 
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import Filters from "../../components/Filters/Filters.jsx";
 
 const Home = ({ allGenres, currentPage, setCurrentPage }) => {
   const games = useSelector((state) => state.filterGames);
