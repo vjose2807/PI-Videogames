@@ -18,37 +18,38 @@ const initialState = {
   genresGames: [],
   allPlatforms: [],
   gameDetails: {},
-
   filterInfo: [],
 };
 
 const rootReducer = (state = initialState, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case GET_ALLGAMES:
       return {
         ...state,
-        allGames: action.payload,
-        filterGames: action.payload,
+        allGames: payload,
+        filterGames: payload,
       };
     case GET_GAME_DETAIL:
       return {
         ...state,
-        gameDetails: action.payload,
+        gameDetails: payload,
       };
     case GET_GENRES:
       return {
         ...state,
-        genresGames: action.payload,
+        genresGames: payload,
       };
     case GET_ALL_PLATFORMS:
       return {
         ...state,
-        allPlatforms: action.payload,
+        allPlatforms: payload,
       };
     case GET_GAME_BY_NAME:
       return {
         ...state,
-        filterGames: action.payload,
+        filterGames: payload,
       };
     case CLEAN_DETAIL:
       return {
@@ -58,21 +59,20 @@ const rootReducer = (state = initialState, action) => {
     case CLEAN_INFO_FILTERS:
       return {
         ...state,
+        filterGames: state.allGames,
         filterInfo: [],
       };
-
     case FILTER_GENDER_GAMES:
-      const copyGames = state.filterGames; //AllGames
-
+      const copyGames = state.filterGames;
       const GamesFiltered =
-        action.payload === "Genres"
+        action.payload === "All Genres"
           ? copyGames
           : copyGames.filter((game) => {
               return !game.createinDb
-                ? game.genres.includes(action.payload) //Para juegos API
+                ? game.genres.includes(action.payload)
                 : game.Genres.map((genre) => genre.name).includes(
                     action.payload
-                  ); //Para juegos DB
+                  );
             });
       return {
         ...state,
@@ -84,66 +84,44 @@ const rootReducer = (state = initialState, action) => {
             ? [...state.filterInfo]
             : [...state.filterInfo, action.payload],
       };
-
     case DELETE_GENRE:
-      const copyGamess = state.filterGames; //AllGames
-
-      const FilteredGames = copyGamess.filter((game) => {
+      const filteredGames = state.allGames.filter((game) => {
         return !game.createinDb
-          ? game.genres.filter((gen) => gen !== action.payload) //Para juegos API
-          : game.Genres.map((genre) => genre.name).filter(
-              (gen) => gen !== action.payload
-            ); //Para juegos DB
+          ? game.genres.includes(payload)
+          : game.Genres.map((genre) => genre.name).includes(payload);
       });
       return {
         ...state,
-        filterGames: FilteredGames,
-        filterInfo: state.filterInfo.filter((filt) => filt !== action.payload),
+        filterGames: filteredGames,
+        filterInfo: state.filterInfo.filter((filter) => filter !== payload),
       };
-
     case FILTER_GAMES_DB_API:
-      const GamesDBAPI = [...state.allGames];
-      const GamesFilter =
-        action.payload === "Stored Games"
-          ? GamesDBAPI.filter((game) => game.createinDb === false)
-          : action.payload === "Created Games"
-          ? GamesDBAPI.filter((game) => game.createinDb === true)
-          : GamesDBAPI;
+      let gamesFilter = [...state.allGames];
+      if (payload === "Stored Games") {
+        gamesFilter = gamesFilter.filter((game) => !game.createinDb);
+      } else if (payload === "Created Games") {
+        gamesFilter = gamesFilter.filter((game) => game.createinDb);
+      }
       return {
         ...state,
-        filterGames: GamesFilter,
-        filterInfo: action.payload === "AllGames" ? [] : [action.payload],
+        filterGames: gamesFilter,
+        filterInfo: payload === "AllGames" ? [] : [payload],
       };
-
     case ORDER_GAMES:
-      const Games = [...state.filterGames]; //AllGames
-      const Sort =
-        action.payload === "Ascendente"
-          ? Games.sort((g1, g2) => {
-              if (g1.name < g2.name) return 1;
-              if (g1.name > g2.name) return -1;
-              return 0;
-            })
-          : action.payload === "Descendente"
-          ? Games.sort((g1, g2) => {
-              if (g1.name < g2.name) return -1;
-              if (g1.name > g2.name) return 1;
-              return 0;
-            })
-          : action.payload === "Rating"
-          ? Games.sort((g1, g2) => {
-              if (g1.rating < g2.rating) return 1;
-              if (g1.rating > g2.rating) return -1;
-              return 0;
-            })
-          : Games;
+      let sortedGames = [...state.filterGames];
+      if (payload === "Ascendente") {
+        sortedGames.sort((g1, g2) => g1.name.localeCompare(g2.name));
+      } else if (payload === "Descendente") {
+        sortedGames.sort((g1, g2) => g2.name.localeCompare(g1.name));
+      } else if (payload === "Rating") {
+        sortedGames.sort((g1, g2) => g2.rating - g1.rating);
+      }
       return {
         ...state,
-        filterGames: Sort,
+        filterGames: sortedGames,
       };
-
     default:
-      return { ...state };
+      return state;
   }
 };
 

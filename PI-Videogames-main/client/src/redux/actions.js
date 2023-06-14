@@ -72,8 +72,8 @@ export const createGames = (videogame) => {
   };
 };
 
-export const filterGenres = (gender) => {
-  return { type: FILTER_GENDER_GAMES, payload: gender };
+export const filterGenres = (genre) => {
+  return { type: FILTER_GENDER_GAMES, payload: genre };
 };
 export const deleteGenre = (genre) => {
   return { type: DELETE_GENRE, payload: genre };
