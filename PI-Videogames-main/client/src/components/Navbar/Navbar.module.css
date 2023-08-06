@@ -1,45 +1,116 @@
-.contBarra {
-  background: transparent;
+/* Estilos para el Navbar normal */
+.navContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  box-shadow: none;
-  border: none;
+  justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 7px;
+}
+
+.contBarra {
+  display: flex;
+  align-items: center;
 }
 
 .contOptions {
-  width: 60%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.contOptions a {
-  font-weight: bolder;
-  text-decoration: none;
-  font-size: 18px;
-  color: #ceaaaa;
-  transition: color 0.2s ease;
-}
-
-.contOptions a:hover {
-  text-decoration: none;
-  color: #801642;
-  transform: scale(1.05);
-}
-.imgsCont {
-  width: 5%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   align-items: center;
 }
 
-.imgs {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
+.contOptions p {
+  color: #fff;
+  margin: 0;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.contOptions p:first-child {
+  margin-left: 0;
+  margin-right: 120px;
+}
+
+.contOptions p:hover {
+  color: #791094e8;
+}
+
+/* Estilos para el botón de menú en dispositivos móviles */
+.menuIcon {
+  display: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 24px;
+}
+
+/* Estilos para el menú desplegable en dispositivos móviles */
+.menuOptions {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  background-color: #333;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 150px;
+}
+
+.menuOptions a {
+  text-decoration: none;
+  color: #fff;
+  padding: 10px;
+  border-bottom: 1px solid #555;
+}
+
+.menuOptions a:last-child {
+  border-bottom: none;
+}
+
+/* Estilos para el enlace vacío que cubre el contenido cuando el menú está abierto */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Media query para mostrar el menú desplegable en dispositivos móviles */
+@media (max-width: 768px) {
+  .menuIcon {
+    display: block;
+  }
+
+  .contOptions {
+    display: none;
+  }
+
+  .menuOptions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Mostrar el menú desplegable cuando isMenuOpen es verdadero */
+  .showMenu .menuOptions {
+    display: flex;
+  }
+
+  /* Mostrar el enlace vacío cuando isMenuOpen es verdadero */
+  .showMenu .overlay {
+    display: block;
+  }
+
+  /* Estilos adicionales para mejorar la apariencia */
+  .menuIcon:hover {
+    background-color: #555;
+    border-radius: 50%;
+  }
+
+  .menuOptions a:hover {
+    background-color: #555;
+  }
 }

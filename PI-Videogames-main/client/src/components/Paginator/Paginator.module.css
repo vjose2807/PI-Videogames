@@ -1,52 +1,64 @@
+/* Estilos para el contenedor de los paginadores */
 .contPages {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  overflow-x: auto;
-  white-space: nowrap;
-  padding: 10px;
-  border-radius: 5px;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .contPages p {
-  color: #f5ebef;
-  margin-right: 10px;
-  font-size: 14px;
+  margin: 0;
+  padding: 5px;
+  font-weight: bold;
 }
 
 .buttonPages {
-  margin: 0 5px;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: #fff;
-  background-color: #801642;
+  background-color: #791094e8;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.buttonPages:hover {
-  background-color: #3bb3ba;
-}
-
-.buttonPages:active {
-  background-color: #2a999f;
+  margin: 5px;
 }
 
 .button {
-  margin: 0 5px;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: #333;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  margin: 5px;
 }
 
-.button:hover {
-  background-color: #f0f0f0;
+.buttonC {
+  background-color: #791094e8;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 5px 10px;
+  border: 2px solid #ffd700;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* Media query para ajustar el tamaño del paginador en pantallas pequeñas */
+@media (max-width: 576px) {
+  .contPages {
+    flex-direction: column;
+  }
+
+  .contPages p {
+    margin-bottom: 5px;
+  }
+
+  .buttonPages,
+  .button,
+  .buttonC {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
 }

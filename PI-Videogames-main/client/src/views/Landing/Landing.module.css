@@ -1,32 +1,42 @@
+/* Landing.module.css */
+
+/* Estilos específicos para el componente Landing */
+
 .container {
-  text-align: center;
-  padding: 20px;
-  background-color: transparent;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .title {
-  font-size: 36px;
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
   margin-bottom: 20px;
-  color: #965417;
 }
 
 .description {
   font-size: 18px;
-  margin-bottom: 20px;
-  color: #c6d15f;
+  color: #666;
+  margin-bottom: 40px;
 }
 
 .button {
-  display: inline-block;
   padding: 10px 20px;
-  background-color: #edf1ae;
-  color: #111010;
-  text-decoration: none;
-  border-radius: 5px;
+  background-color: rgba(255, 215, 0, 0.9);
+  color: #fff;
+  font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .button:hover {
-  background-color: #743b15;
+  background-color: #45a049;
 }

@@ -1,55 +1,147 @@
+/* Estilos para el contenedor global */
 .globalCont {
-  height: 1650px;
-  display: flex;
-}
-
-.contPags {
-  margin-right: 40px;
-  margin-left: 40px;
-  display: flex;
-  flex-direction: column;
-}
-
-.Title {
-  color: rgb(119, 13, 45);
-  text-shadow: 0 0 6px #b88926;
-}
-
-.contVideogames {
-  background-attachment: fixed;
-  width: 100%;
-}
-
-.ContCards {
-  background-size: cover;
-  height: 1500px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.filtersCont {
-  background-size: cover;
-  color: white;
-  width: 15%;
-  display: flex;
-  flex-direction: column;
-}
-
-.textAlert {
-  color: white;
-  text-shadow: 0 0 6px #000000;
-}
-
-.contLoading {
-  color: white;
-  text-shadow: 0 0 6px #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }
 
+/* Estilos para el contenedor de los filtros */
+.filtersCont {
+  width: 95%;
+  margin-bottom: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+}
+
+/* Estilos para el contenedor de los videojuegos */
+.ContCards {
+  display: flex;
+  flex-wrap: wrap; /* Para que las tarjetas se envuelvan en varias líneas */
+  justify-content: space-between; /* Distribuir las tarjetas equitativamente */
+  gap: 20px; /* Espacio entre las tarjetas */
+}
+
+/* Estilos para el contenedor de los paginadores */
+.contPags {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Estilos para el texto de alerta */
+.textAlert {
+  text-align: center;
+  margin: 20px;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Estilos para el contenedor de carga */
+.contLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+/* Estilos para la imagen de carga */
 .imgChargeGame {
-  width: 200px;
-  height: 15%;
+  width: 50px;
+  height: 50px;
+}
+
+/* Estilos para el paginador */
+.Paginator {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.Paginator button {
+  background-color: #555;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.Paginator button:hover {
+  background-color: #333;
+}
+
+/* Estilos para los filtros */
+.Filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.Filter label {
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.Filter select {
+  font-size: 14px;
+  padding: 5px;
+}
+
+/* Media query para ajustar el ancho del contenedor de filtros en pantallas pequeñas */
+@media (max-width: 768px) {
+  .filtersCont {
+    width: 100%;
+  }
+}
+
+/* Media query para ajustar el ancho del contenedor de videojuegos en pantallas pequeñas */
+@media (max-width: 768px) {
+  .contVideogames {
+    width: 100%;
+  }
+}
+
+/* Media query para ajustar el tamaño de los filtros y los elementos del paginador en pantallas pequeñas */
+@media (max-width: 576px) {
+  .Filter label {
+    font-size: 12px;
+  }
+
+  .Filter select {
+    font-size: 12px;
+  }
+
+  .Paginator button {
+    padding: 3px 8px;
+    font-size: 12px;
+  }
+}
+
+/* Media query para ajustar el tamaño de las cards en pantallas muy pequeñas */
+@media (max-width: 320px) {
+  .Card {
+    width: 140px;
+    height: 180px;
+  }
+
+  .Card h4 {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .Info p {
+    font-size: 10px;
+  }
+
+  .Link {
+    font-size: 12px;
+  }
 }

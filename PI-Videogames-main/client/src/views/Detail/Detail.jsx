@@ -1,32 +1,43 @@
+import React from "react";
 import useGameDetail from "../../hooks/useGameDetail";
-import style from "./Detail.module.css";
+import styles from "./Detail.module.css";
 
 const Detail = () => {
   const game = useGameDetail();
   const backgroundImageStyle = {
-    backgroundImage: `url(${game.image})`,
+    position: "relative",
   };
 
+  const backgroundOverlayStyle = {
+    content: "",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: `url(${game.image})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    opacity: 0.4, // Ajusta el valor de opacidad para la imagen de fondo
+    borderRadius: "30px", // Opcional: agrega bordes redondeados a la imagen de fondo
+  };
   return (
-    <div className={style.contGame} style={backgroundImageStyle}>
-      {game.name ? (
-        <>
-          <div className={style.contAllInfo}>
-            <div className={style.contTitleImg}>
-              <h3>{game.name}</h3>
-              <img className={style.imgGame} src={game.image} alt="" />
-            </div>
-
-            <div className={style.detailGame}>
+    <div className={styles.globalCont}>
+      <div className={styles.contGame} style={backgroundImageStyle}>
+        <div style={backgroundOverlayStyle}></div>
+        {game.name ? (
+          <div className={styles.contAllInfo}>
+            <div className={styles.detailGame}>
               {game.createinDb === false ? (
                 <>
                   <p>ID: {game.id}</p>
-                  <p>Platforms: {game.platforms?.join(", ")}</p>
+                  <p>Platforms: {game.platforms?.join(" | ")}</p>
                   <p>Description:</p>
                   <div dangerouslySetInnerHTML={{ __html: game.description }} />
                   <p>Released: {game.released}</p>
                   <p>Rating: {String(game.rating).slice(0, 4)}</p>
-                  <p>Genres: {game.genres?.join(", ")}</p>
+                  <p>Genres: {game.genres?.join(" | ")}</p>
                 </>
               ) : (
                 <>
@@ -43,10 +54,10 @@ const Detail = () => {
               )}
             </div>
           </div>
-        </>
-      ) : (
-        <h2>Loading...</h2>
-      )}
+        ) : (
+          <h2>Loading...</h2>
+        )}
+      </div>
     </div>
   );
 };

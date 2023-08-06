@@ -1,21 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { cleanGameDetail, getGameDetail } from "../redux/actions";
 
 const useGameDetail = () => {
-    const dispatch = useDispatch();
-    const gameDetails = useSelector((state)=> state.gameDetails);
-    const {idGame} = useParams();
+  const dispatch = useDispatch();
+  const gameDetails = useSelector((state) => state.gameDetails);
+  const { idGame } = useParams();
 
-    useEffect(()=>{
-        dispatch(getGameDetail(idGame));
-        return () => {
-            dispatch(cleanGameDetail())
-        }
-    },[idGame])
+  useEffect(() => {
+    dispatch(getGameDetail(idGame));
+    return () => {
+      dispatch(cleanGameDetail());
+    };
+  }, [dispatch, idGame]);
 
-    return gameDetails;
-}
+  return gameDetails;
+};
 
 export default useGameDetail;

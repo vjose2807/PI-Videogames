@@ -57,33 +57,34 @@ const Filters = ({ allGenres, setCurrentPage, filterInfo }) => {
 
   return (
     <div className={style.contFilters}>
-      <p>Filtrar juegos por:</p>
-      <label>*Órden Alfabético:</label>
+      <label>Órden Alfabético:</label>
       <select name="Order" onChange={(event) => ordenamiento(event)}>
-        <option value="AllGames">All Games</option>
+        <option value="AllGames">Todos</option>
         <option value="Ascendente">Ascendente</option>
         <option value="Descendente">Descendente</option>
         <option value="Rating">Rating</option>
       </select>
       <br />
-      <label>*Almacenamiento:</label>
+      <label>Almacenamiento:</label>
       <select name="Datatype" onChange={(event) => filterDbAPI(event)}>
-        <option value="AllGames">All Games</option>
-        <option value="Stored Games">Stored Games</option>
-        <option value="Created Games">Created Games</option>
+        <option value="AllGames">Todos</option>
+        <option value="Stored Games">Juegos almacenados</option>
+        <option value="Created Games">Juegos creados</option>
       </select>
       <br />
-      <label>*Géneros:</label>
+      <label>Género:</label>
       <select name="Filters" onChange={(event) => filterGenre(event)}>
-        <option value="Genres">All Genres</option>
-        {allGenres?.map((genre) => {
-          return <option value={genre}>{genre}</option>;
+        <option value="Genres">Todos</option>
+        {allGenres?.map((genre, index) => {
+          return (
+            <option key={index} value={genre}>
+              {genre}
+            </option>
+          );
         })}
       </select>
       <br />
-      <button onClick={() => showAllVideogames()}>
-        Mostrar todos los Videojuegos
-      </button>
+      <button onClick={() => showAllVideogames()}>Todos los Videojuegos</button>
       <p>Filtros Aplicados:</p>
       <div className={style.contInfoFilters}>
         {filterInfo.length === 0 ? (
@@ -91,9 +92,9 @@ const Filters = ({ allGenres, setCurrentPage, filterInfo }) => {
         ) : filterInfo.length > 6 ? (
           <li>Límite de filtros.</li>
         ) : (
-          filterInfo.map((filter) => {
+          filterInfo.map((filter, index) => {
             return (
-              <div className={style.closeFilter}>
+              <div key={index} className={style.closeFilter}>
                 <button
                   className={style.delButton}
                   onClick={() => onCloseFilter(filter)}

@@ -110,132 +110,137 @@ const Form = ({ allGenres, allPlatforms }) => {
   };
 
   return (
-    <div className={styles.globalCont}>
-      <div className={styles.contForm}>
-        <h2 className={styles.title}>🕹️ ADD YOUR GAME 🕹️</h2>
+    <div className={styles.formContainer}>
+      <div className={styles.globalCont}>
+        <div className={styles.contForm}>
+          <h2 className={styles.title}>🕹️ Añade tu juego 🕹️</h2>
 
-        <form onSubmit={handleSubmit} className={styles.formData}>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            onChange={handleChange}
-            value={gameData.name}
-          />
+          <form onSubmit={handleSubmit} className={styles.formData}>
+            <label htmlFor="name">Nombre</label>
+            <input
+              type="text"
+              name="name"
+              onChange={handleChange}
+              value={gameData.name}
+            />
 
-          <label htmlFor="image">Image URL:</label>
-          <input
-            type="url"
-            name="image"
-            onChange={handleChange}
-            value={gameData.image}
-          ></input>
+            <label htmlFor="image">Imagen(URL):</label>
+            <input
+              type="url"
+              name="image"
+              onChange={handleChange}
+              value={gameData.image}
+            ></input>
 
-          <label htmlFor="description">Description:</label>
-          <textarea
-            name="description"
-            onChange={handleChange}
-            value={gameData.description}
-          ></textarea>
+            <label htmlFor="description">Descripción:</label>
+            <textarea
+              name="description"
+              onChange={handleChange}
+              value={gameData.description}
+            ></textarea>
 
-          <label htmlFor="platforms">Platforms:</label>
-          <div className={styles.contPlatforms}>
-            {allPlatforms?.map((plat, index) => {
-              return (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    onClick={(event) => AddPlatform(event)}
-                    value={plat}
-                  />
-                  <label key={plat} htmlFor={plat}>
-                    {plat}
-                  </label>
-                </div>
-              );
-            })}
-          </div>
+            <label htmlFor="platforms">Platforma:</label>
+            <div className={styles.contPlatforms}>
+              {allPlatforms?.map((plat, index) => {
+                return (
+                  <div key={index}>
+                    <input
+                      type="checkbox"
+                      onClick={(event) => AddPlatform(event)}
+                      value={plat}
+                    />
+                    <label key={plat} htmlFor={plat}>
+                      {plat}
+                    </label>
+                  </div>
+                );
+              })}
+            </div>
 
-          <label htmlFor="released">Released:</label>
-          <input
-            type="date"
-            name="released"
-            onChange={handleChange}
-            value={gameData.released}
-          ></input>
+            <label htmlFor="released">Lanzamiento:</label>
+            <input
+              type="date"
+              name="released"
+              onChange={handleChange}
+              value={gameData.released}
+            ></input>
 
-          <label htmlFor="rating">Rating</label>
-          <input
-            type="number"
-            name="rating"
-            onBlur={(event) => ratingInCero(event)}
-            onChange={handleChange}
-            step="0.01"
-            value={gameData.rating}
-          ></input>
+            <label htmlFor="rating">Puntuación</label>
+            <input
+              type="number"
+              name="rating"
+              onBlur={(event) => ratingInCero(event)}
+              onChange={handleChange}
+              step="0.01"
+              value={gameData.rating}
+            ></input>
 
-          <label htmlFor="genres">Choose your favorites Genres:</label>
-          <div className={styles.contGenres}>
-            {allGenres?.map((genre, index) => {
-              return (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    onClick={(event) => AddGenres(event)}
-                    value={genre}
-                  />
-                  <label htmlFor={genre}>{genre}</label>
-                </div>
-              );
-            })}
-          </div>
-          {errors.flag === true ? (
-            <button disabled>Create Game</button>
-          ) : (
-            <button>Create Game</button>
-          )}
-        </form>
-      </div>
-
-      <div className={styles.infoValidation}>
-        <div className={styles.titleInfo}>
-          <h2>📌 Validaciones:</h2>
-          <p>
-            - Deberán cumplirse las condiciones de validación para almacenar el
-            nuevo videojuego en la base de datos, de lo contrario, los datos no
-            se guardarán.
-          </p>
+            <label htmlFor="genres">Género:</label>
+            <div className={styles.contGenres}>
+              {allGenres?.map((genre, index) => {
+                return (
+                  <div key={index}>
+                    <input
+                      type="checkbox"
+                      onClick={(event) => AddGenres(event)}
+                      value={genre}
+                    />
+                    <label htmlFor={genre}>{genre}</label>
+                  </div>
+                );
+              })}
+            </div>
+            {errors.flag === true ? (
+              <button disabled>Crear juego</button>
+            ) : (
+              <button>Crear juego</button>
+            )}
+          </form>
         </div>
-        <ul className={styles.uList}>
-          <li className={errors.name ? styles.errorName : styles.validName}>
-            Name: {errors.name ? errors.name : "Información correcta."}
-          </li>
-          <li className={errors.image ? styles.errorImg : styles.validImg}>
-            Image: {errors.image ? errors.image : "Información correcta."}
-          </li>
-          <li
-            className={errors.description ? styles.errorDes : styles.validDes}
-          >
-            Description:{" "}
-            {errors.description ? errors.description : "Información correcta."}
-          </li>
-          <li className={errors.released ? styles.errorRel : styles.validRel}>
-            Released:{" "}
-            {errors.released ? errors.released : "Información correcta."}
-          </li>
-          <li className={errors.rating ? styles.errorRat : styles.validRat}>
-            Rating: {errors.rating ? errors.rating : "Información correcta."}
-          </li>
-          <li className={errors.genres ? styles.errorGen : styles.validGen}>
-            Genres: {errors.genres ? errors.genres : "Información correcta."}
-          </li>
-          <li
-            className={errors.platforms ? styles.errorPlat : styles.validPlat}
-          >
-            Platforms:{" "}
-            {errors.platforms ? errors.platforms : "Información correcta."}
-          </li>
-        </ul>
+
+        <div className={styles.infoValidation}>
+          <div className={styles.titleInfo}>
+            <h2>📌 Validaciones:</h2>
+            <p>
+              - Deberán cumplirse las condiciones de validación para almacenar
+              el nuevo videojuego en la base de datos, de lo contrario, los
+              datos no se guardarán.
+            </p>
+          </div>
+          <ul className={styles.uList}>
+            <li className={errors.name ? styles.errorName : styles.validName}>
+              Nombre: {errors.name ? errors.name : "Información correcta."}
+            </li>
+            <li className={errors.image ? styles.errorImg : styles.validImg}>
+              Imagen: {errors.image ? errors.image : "Información correcta."}
+            </li>
+            <li
+              className={errors.description ? styles.errorDes : styles.validDes}
+            >
+              Descripción:{" "}
+              {errors.description
+                ? errors.description
+                : "Información correcta."}
+            </li>
+            <li className={errors.released ? styles.errorRel : styles.validRel}>
+              Lanzamiento:{" "}
+              {errors.released ? errors.released : "Información correcta."}
+            </li>
+            <li className={errors.rating ? styles.errorRat : styles.validRat}>
+              Puntuación:{" "}
+              {errors.rating ? errors.rating : "Información correcta."}
+            </li>
+            <li className={errors.genres ? styles.errorGen : styles.validGen}>
+              Género: {errors.genres ? errors.genres : "Información correcta."}
+            </li>
+            <li
+              className={errors.platforms ? styles.errorPlat : styles.validPlat}
+            >
+              Plataforma:{" "}
+              {errors.platforms ? errors.platforms : "Información correcta."}
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

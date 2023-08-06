@@ -29,15 +29,12 @@ const Home = ({ allGenres, currentPage, setCurrentPage }) => {
 
       <div className={style.contVideogames}>
         <div className={style.contPags}>
-          <h2 className={style.Title}>
-            VIDEOGAMES
-            <Paginado
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              cantGames={games.length}
-              gamesPag={gamesPag}
-            />
-          </h2>
+          <Paginado
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            cantGames={games.length}
+            gamesPag={gamesPag}
+          />
         </div>
         <div className={style.ContCards}>
           {games.length !== 0 ? (
@@ -58,7 +55,7 @@ const Home = ({ allGenres, currentPage, setCurrentPage }) => {
             )
           ) : games.length === 0 && filterInfo.length !== 0 ? (
             <div className={style.textAlert}>
-              <h2>There are no video games with those filters applied.</h2>
+              <h2>No se encontraron videojuegos para los filtros aplicados</h2>
             </div>
           ) : (
             <div className={style.contLoading}>

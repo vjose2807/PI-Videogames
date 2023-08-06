@@ -11,14 +11,12 @@ const Paginado = ({ currentPage, setCurrentPage, cantGames, gamesPag }) => {
   return (
     <div>
       <div className={style.contPages}>
-        <p>PAGE:</p>
+        <p>PAGINA:</p>
         {currentPage !== 1 && allGames.length !== 0 ? (
           <button
             className={style.buttonPages}
             onClick={() => setCurrentPage(currentPage - 1)}
-          >
-            ◀
-          </button>
+          ></button>
         ) : allGames.length === 0 ? (
           <p>No hay juegos disponibles</p>
         ) : (

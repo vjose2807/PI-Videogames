@@ -1,40 +1,89 @@
+/* Estilos para la tarjeta de videojuego */
 .Card {
   position: relative;
-  width: 20%;
-  height: 300px;
-  margin: 5px;
-  background: linear-gradient(135deg, #490821, #c47b65);
-  border-radius: 20px;
-  box-shadow: -8px 9px 14px -3px rgba(180, 179, 126, 0.75);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: all 0.2s;
-  overflow: hidden; /* Oculta cualquier contenido que desborde del contenedor */
+  justify-content: space-between;
+  width: 190px;
+  height: 220px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 7px 14px rgb(0, 0, 0);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.Card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgb(49, 2, 68);
 }
 
 .Card h4 {
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-.Card img {
-  width: 80%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.Card p {
-  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #791094e8;
+  margin: 0;
+  font-size: 12px;
+  color: #ffffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding: 4px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .Card a {
   text-decoration: none;
-  color: #fff;
-  transition: color 0.2s;
+  color: #333;
 }
 
-.Card a:hover {
-  color: #ffd700;
+/* Estilos para la información de la tarjeta */
+.Info {
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: #333333;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
+
+.Info p {
+  margin: 0;
+  font-size: 12px;
+}
+
+/* Estilos para el enlace del detalle del videojuego */
+.Link {
+  text-decoration: none;
+  color: #110e0ede;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Estilos para el contenedor de las tarjetas de videojuegos */
+.ContCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media query para ajustar el tamaño de las tarjetas en pantallas pequeñas */
+@media (max-width: 768px) {
+  .Card {
+    width: 120px;
+    height: 180px;
+  }
+}
+
+/* Resto de estilos... */

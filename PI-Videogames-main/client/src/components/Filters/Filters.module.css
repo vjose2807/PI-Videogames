@@ -1,98 +1,107 @@
+/* Estilos para el contenedor de los filtros */
 .contFilters {
-  position: fixed;
-  width: 11%;
-  margin-left: 15px;
   display: flex;
-  flex-direction: column;
-}
-
-/* Estilo para el título de los filtros */
-.filterTitle {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Estilo para cada fila de filtro */
-.filterRow {
-  display: flex;
+  flex-wrap: wrap; /* Para que los elementos se envuelvan en varias líneas en dispositivos pequeños */
+  justify-content: center; /* Centrar los elementos horizontalmente */
   align-items: center;
-  margin-bottom: 10px;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f2f2f2;
 }
 
-/* Estilo para las etiquetas de filtro */
-.filterLabel {
-  margin-right: 5px;
-}
-
-/* Estilo para las selecciones de filtro */
-.filterSelect {
-  flex-grow: 1;
-  height: 30px;
-  padding: 3px;
-  font-size: 14px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-/* Estilo para el botón de mostrar todos los videojuegos */
-.showAllButton {
-  margin-top: 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #801642;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.showAllButton:hover {
-  background-color: #3bb3ba;
-}
-
-.showAllButton:active {
-  background-color: #2a999f;
-}
-
-/* Estilo para el título de los filtros aplicados */
-.appliedFiltersTitle {
-  margin-top: 20px;
-  font-size: 16px;
+.contFilters p {
+  font-size: 10px;
   font-weight: bold;
+  margin: 2px;
+  color: #791094;
+}
+
+.contFilters label {
+  color: #791094;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.contFilters select {
+  flex: 1; /* Ocupar todo el ancho posible */
+  margin: 2px;
+  padding: 3px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.contFilters button {
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #791094;
+  color: #ffffff;
 }
 
 .contInfoFilters {
-  height: 19rem;
+  color: #ddd;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   flex-wrap: wrap;
+  align-items: center;
+  margin-top: 2px;
+  padding: 2px;
+  list-style: none;
 }
 
-/* Estilo para cada filtro aplicado */
 .closeFilter {
+  padding: 2px;
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
-  padding: 5px;
-  border-radius: 15px;
-  background-color: #f4ff90;
+  margin: 1px;
+  background-color: #bdb3b3be;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+
+  &:active,
+  &:hover {
+    transform: scale(0.95);
+  }
 }
 
-/* Estilo para el botón de eliminar filtro */
 .delButton {
-  margin-right: 5px;
-  padding: 5px;
-  font-size: 12px;
-  border-radius: 20px;
-  background-color: #fff;
+  background-color: transparent;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
   border: none;
   cursor: pointer;
+  margin-right: 2px;
 }
 
-/* Estilo para la información del filtro */
-.filterInfo {
-  flex-grow: 1;
-  font-size: 14px;
+.delButton:hover {
+  color: #ff0000;
+}
+
+.contInfoFilters li {
+  font-size: 10px;
+  font-weight: bold;
+  margin: 2px;
+  color: #463f4796;
+}
+
+/* Media query para ajustar el tamaño de los filtros en dispositivos móviles */
+@media (max-width: 768px) {
+  .contFilters p {
+    display: none; /* Ocultar el texto para ahorrar espacio */
+  }
+
+  .contFilters select {
+    flex: 100%; /* Ocupar todo el ancho disponible */
+  }
+
+  .contFilters button {
+    flex: 100%; /* Ocupar todo el ancho disponible */
+  }
 }
