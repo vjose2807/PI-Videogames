@@ -12,31 +12,31 @@
 }
 
 .contFilters p {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
-  margin: 2px;
+  margin: 4px;
   color: #791094;
 }
 
 .contFilters label {
   color: #791094;
   font-weight: bold;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .contFilters select {
   flex: 1; /* Ocupar todo el ancho posible */
-  margin: 2px;
-  padding: 3px;
+  margin: 5px;
+  padding: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .contFilters button {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
-  padding: 3px 10px;
+  padding: 5px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -73,7 +73,7 @@
 .delButton {
   background-color: transparent;
   color: #fff;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
   border: none;
   cursor: pointer;
@@ -85,9 +85,9 @@
 }
 
 .contInfoFilters li {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: bold;
-  margin: 2px;
+  margin: 4px;
   color: #463f4796;
 }
 
